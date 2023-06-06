@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+    {% if title %}
+        <title>Digitalia - {{ title }}</title>
+    {% else %}
+        <title>Digitalia</title>
+    {% endif %}
+</head>
+<body>
+<header>
+    <nav>
+        <a href="{% url 'auth' %}">Auth</a>
+        <a href="{% url 'upload' %}">Upload CSV</a>
+        <a href="{% url 'result' %}">Result</a>
+    </nav>
+</header>
+    {% block content %}{% endblock %}
+</body>
+</html>
