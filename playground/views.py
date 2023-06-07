@@ -1,6 +1,20 @@
 from django.shortcuts import render
 
 
+def home(request):
+    context = {
+        'title': 'Home',
+    }
+    return render(request, 'home/home.html', context)
+
+
+def challenge(request):
+    context = {
+        'title': 'Challenge',
+    }
+    return render(request, 'challenge/challenge.html', context)
+
+
 def auth(request):
     context = {
         'title': 'Auth',
