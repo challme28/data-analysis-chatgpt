@@ -12,8 +12,9 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'api_key', 'password1', 'password2']
 
 
-class ProfileForm(forms.Form):
+class ProfileUpdateForm(forms.ModelForm):
+    api_key = forms.CharField(help_text='Your ChatGPT API key.', required=True, label='ChatGPT API key')
 
     class Meta:
         model = UserData
-        fields = ['api_key', 'user']
+        fields = ['api_key']
