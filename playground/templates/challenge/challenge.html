@@ -1,5 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Challenge</h1>
+    <h3>Análisis preliminar de datos con ChatGPT</h3>
+    <p><strong>Objetivo:</strong> Desarrollar una aplicación que utilice la API de ChatGPT para realizar una
+        interpretación básica de los datos cargados por el usuario. La interpretación deberá ser lo suficientemente
+        descriptiva para que el usuario pueda entender la naturaleza de los datos y sugerir posibles direcciones para un
+        análisis más profundo.</p>
+    <p><strong>Autenticación y autorización:</strong> Desarrolla un endpoint de autenticación que permita a los usuarios
+        ingresar su API Key de Chat GPT para pruebas. Este proceso deberá manejar la verificación y validación de las
+        claves de API proporcionadas.</p>
+    <p><strong>Interfaz de carga de datos:</strong> Implementa un endpoint que permita a los usuarios subir archivos de
+        datos en formato CSV. Esta funcionalidad debe manejar la validación y procesamiento de archivos CSV, así como la
+        extracción de datos para su uso en ChatGPT.</p>
+    <p><strong>Interpretación de datos con ChatGPT:</strong> Utiliza la API de ChatGPT para leer las columnas del CSV
+        subido, entender la información y proporcionar una descripción inicial de los datos. Esto incluye identificar el
+        tipo de información en cada columna (por ejemplo, numérica, categórica), el rango de valores, y cualquier patrón
+        observable. Además, ChatGPT debe ser capaz de sugerir posibles análisis a realizar con los datos, basándose en
+        su comprensión inicial. Ten en cuenta que el objetivo no es que ChatGPT realice un análisis exhaustivo de los
+        datos, sino que proporcione un resumen inicial y sugerencias para análisis futuros.</p>
+    <p><strong>Interfaz de usuario:</strong> Desarrolla una interfaz de usuario básica para permitir la interacción con
+        la aplicación. Esta interfaz debe permitir la entrada de la API Key, la carga de archivos CSV y la visualización
+        de los resultados de la interpretación de datos proporcionada por ChatGPT.</p>
+    <p><strong>Recomendación:</strong> Cuando utilices ChatGPT, es importante que dividas el proceso en diferentes
+        prompts con contexto, para asegurar que las respuestas sean pertinentes y útiles.</p>
+    <p><strong>Stack Tecnológico:</strong> Python o Go.</p>
 {% endblock content %}

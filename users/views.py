@@ -35,7 +35,6 @@ def profile(request):
     else:
         form = ProfileUpdateForm(instance=user)
     context = {
-        'profile': user,
         'form': form
     }
     return render(request, 'users/profile.html', context)
