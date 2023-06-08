@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'playground',
     'users',
     'crispy_forms',
-    "crispy_bootstrap4",
+    "crispy_bootstrap5",
     "debug_toolbar",
 ]
 
@@ -127,9 +127,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
