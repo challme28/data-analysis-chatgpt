@@ -1,5 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-    <h1>Home page</h1>
+    {% if user.is_authenticated %}
+        <div class="content-section">
+            <h1>CSV Analyzer</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="file">Upload a CSV file</label>
+                <input type="file" name="file" required accept=".csv">
+                <div class="form-group">
+                    <button class="btn btn-outline-info mt-4" type="submit">Upload</button>
+                </div>
+            </form>
+            {% if response %}
+                <p class="mt-4">{{ response }}</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <h1>Home page</h1>
+    {% endif %}
 {% endblock content %}
