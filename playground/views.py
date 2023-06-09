@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from playground.utlis import decode_response, write_response
+from playground.utils import decode_response, write_response
 from playground.agent import create_agent, query_agent
 from users.models import UserData
 
@@ -39,18 +39,3 @@ def challenge(request):
         'title': 'Challenge',
     }
     return render(request, 'challenge/challenge.html', context)
-
-
-def auth(request):
-    context = {
-        'title': 'Auth',
-    }
-    return render(request, 'auth/auth.html', context)
-
-
-def upload(request):
-    return render(request, 'upload/upload.html')
-
-
-def result(request):
-    return render(request, 'result/result.html')

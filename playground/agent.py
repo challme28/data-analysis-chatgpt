@@ -10,8 +10,6 @@ def create_agent(filename: str, api_key: str):
     # Read the CSV file into a Pandas DataFrame.
     df = pd.read_csv(filename)
 
-    print(df)
-
     # Create a Pandas DataFrame agent.
     return create_pandas_dataframe_agent(llm, df, verbose=False)
 
@@ -53,8 +51,7 @@ def query_agent(agent, query):
     )
 
     # Run the prompt through the agent.
-    # response = agent.run(prompt)
-    response = '{"hi": "hello, baby"}'
+    response = agent.run(prompt)
 
     # Convert the response to a string.
     return response.__str__()
