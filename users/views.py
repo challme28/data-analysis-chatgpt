@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+
 from .forms import UserRegisterForm, ProfileUpdateForm
 from .models import UserData
 
@@ -25,15 +26,15 @@ def register(request):
 
 @login_required()
 def profile(request):
-    user = UserData.objects.get(user=request.user)
+    user = request.user
     if request.method == 'POST':
-        form = ProfileUpdateForm(request.POST, instance=user)
+        form = ProfileUpdateForm(request.POST, instance=user.userdata)
         if form.is_valid():
             form.save()
             messages.success(request, f'Your profile has been updated.')
             return redirect('profile')
     else:
-        form = ProfileUpdateForm(instance=user)
+        form = ProfileUpdateForm(instance=user.userdata)
     context = {
         'form': form
     }
