@@ -1,8 +1,7 @@
 from django import forms
-from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import UserData
+from .models import Profile
 
 import openai
 
@@ -52,5 +51,5 @@ class ProfileUpdateForm(forms.ModelForm):
         validate_api_key(self, api_key)
 
     class Meta:
-        model = UserData
+        model = Profile
         fields = ['api_key']

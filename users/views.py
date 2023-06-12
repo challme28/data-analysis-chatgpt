@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserRegisterForm, ProfileUpdateForm
-from .models import UserData
+from .models import Profile
 
 
 def register(request):
@@ -16,8 +16,8 @@ def register(request):
             api_key = form.cleaned_data.get('api_key')
             messages.success(request, f'Your account has been created.')
             user = User.objects.get(username=username)
-            user_data = UserData.objects.create(user=user, api_key=api_key)
-            user_data.save()
+            user_profile = Profile.objects.create(user=user, api_key=api_key)
+            user_profile.save()
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -28,13 +28,13 @@ def register(request):
 def profile(request):
     user = request.user
     if request.method == 'POST':
-        form = ProfileUpdateForm(request.POST, instance=user.userdata)
+        form = ProfileUpdateForm(request.POST, instance=user.profile)
         if form.is_valid():
             form.save()
             messages.success(request, f'Your profile has been updated.')
             return redirect('profile')
     else:
-        form = ProfileUpdateForm(instance=user.userdata)
+        form = ProfileUpdateForm(instance=user.profile)
     context = {
         'form': form
     }

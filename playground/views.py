@@ -3,7 +3,7 @@ from django.contrib import messages
 
 from playground.utils import decode_response, write_response
 from playground.agent import create_agent, query_agent
-from users.models import UserData
+from users.models import Profile
 
 
 def handle_initial_query(request):
@@ -15,7 +15,8 @@ def handle_initial_query(request):
         if csv_file.multiple_chunks():
             messages.error(request, "Uploaded file is too big (%.2f MB)." % (csv_file.size / (1000 * 1000),))
             return redirect('home')
-        profile = UserData.objects.get(user=request.user)
+
+        profile = Profile.objects.get(user=request.user)
         agent = create_agent(csv_file, profile.api_key)
         response = query_agent(agent=agent, query="Give me an initial description of the data")
         return decode_response(response)
