@@ -1,20 +1,23 @@
-from langchain import OpenAI
-from langchain.agents import create_pandas_dataframe_agent
 import pandas as pd
 
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from langchain import OpenAI
+from langchain.agents import create_pandas_dataframe_agent, AgentExecutor
 
-def create_agent(filename: str, api_key: str):
+
+def create_agent(filename: InMemoryUploadedFile, api_key: str) -> AgentExecutor:
     # Create an OpenAI object.
     llm = OpenAI(openai_api_key=api_key)
 
     # Read the CSV file into a Pandas DataFrame.
-    df = pd.read_csv(filename)
+    # .open because it was read for validation
+    df = pd.read_csv(filename.open())
 
     # Create a Pandas DataFrame agent.
     return create_pandas_dataframe_agent(llm, df, verbose=False)
 
 
-def query_agent(agent, query):
+def query_agent(agent: AgentExecutor, query: str) -> str:
     prompt = (
             """
                 For the following query, if it requires drawing a table, reply as follows:
