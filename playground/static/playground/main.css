@@ -49,6 +49,11 @@ a.article-title:hover {
     white-space: pre-line;
 }
 
+.article-content.response {
+    white-space: pre-line;
+    text-align: end;
+}
+
 .article-img {
     height: 65px;
     width: 65px;

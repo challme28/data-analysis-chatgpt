@@ -29,7 +29,8 @@ class FileDataForm(forms.ModelForm):
         validators=[validate_is_csv],
         widget=forms.FileInput(attrs={'accept': '.csv'}),
     )
-    input = forms.CharField(label="What is your query?", required=False)
+    input = forms.CharField(label="What is your query?", required=False,
+                            widget=forms.TextInput(attrs={'placeholder': 'Give me an initial description of the data'}))
 
     class Meta:
         model = FileData
